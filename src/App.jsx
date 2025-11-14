@@ -1,28 +1,33 @@
-import { useState } from 'react'
+import React from 'react'
+import { Routes, Route, Navigate } from 'react-router-dom'
+import { ThemeProvider } from './components/ThemeProvider'
+import Login from './pages/Login'
+import Dashboard from './pages/Dashboard'
+import Books from './pages/Books'
+import Transactions from './pages/Transactions'
+import Users from './pages/Users'
+import Reports from './pages/Reports'
+import Assistant from './pages/Assistant'
+import Settings from './pages/Settings'
+import Billing from './pages/Billing'
+import Documents from './pages/Documents'
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App(){
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
-        </div>
-      </div>
-    </div>
+    <ThemeProvider>
+      <Routes>
+        <Route path="/" element={<Navigate to="/login" replace />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/books" element={<Books />} />
+        <Route path="/transactions" element={<Transactions />} />
+        <Route path="/users" element={<Users />} />
+        <Route path="/reports" element={<Reports />} />
+        <Route path="/assistant" element={<Assistant />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/billing" element={<Billing />} />
+        <Route path="/documents" element={<Documents />} />
+      </Routes>
+    </ThemeProvider>
   )
 }
-
-export default App
